@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function(){
+
+                let answers = ['C', 'JavaScript', 'Python', 'SQL'];
+                let answer = document.getElementById('answer'); 
+                let btns = document.getElementById('answers').querySelectorAll('button'); 
+
+                btns.forEach(btn => {
+                    btn.addEventListener('click', function(){
+                        if(answers.includes(btn.innerHTML)){
+                            btn.style.backgroundColor = 'green';
+                            answer.innerHTML = 'Correct!' 
+                        }else{
+                            btn.style.backgroundColor = 'red'; 
+                            answer.innerHTML = 'Incorrect'; 
+                        }
+                    })
+                }); 
+
+                let msg = document.getElementById('msg'); 
+                let correct = 'c'; 
+                let check = document.getElementById('check'); 
+                let user_answer = document.querySelector('input'); 
+                
+                user_answer.addEventListener('input', function(){
+                    check.addEventListener('click', function(){
+                        if(user_answer.value.toLowerCase() == correct){
+                            msg.innerHTML = 'Correct!'; 
+                            user_answer.style.backgroundColor = 'green';
+                        }else{
+                            msg.innerHTML = 'Incorrect!'; 
+                            user_answer.style.backgroundColor = 'red';
+                        }
+                    }); 
+                }); 
+            })
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>
+                    What are the programming languages taught in CS50?
+                </h3>
+                <p id="answer"></p>
+                <div id="answers">
+                    <button>C</button>
+                    <button>Ruby</button>
+                    <button>Python</button>
+                    <button>JavaScript</button>
+                    <button>C++</button>
+                    <button>SQL</button>
+                    <button>Java</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>
+                    What is the first programming language you learned in CS50? 
+                </h3>
+                <input type="text">
+                <p id="msg"></p>
+                <button id='check'>Check Answer</button>
+            </div>
+        </div>
+    </body>
+</html>
